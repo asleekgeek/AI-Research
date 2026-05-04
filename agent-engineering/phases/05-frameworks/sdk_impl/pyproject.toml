@@ -1,0 +1,21 @@
+[project]
+name = "phase-05-frameworks-sdk"
+version = "0.1.0"
+description = "Phase 4 pipeline implemented on the Claude Agent SDK"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=0.42.0",
+    "claude-agent-sdk>=0.1.0",
+    "pydantic>=2.9.0",
+    "agent-shared",
+]
+
+[project.scripts]
+sdk-pipeline = "sdk_pipeline.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sdk_pipeline"]

@@ -1,0 +1,80 @@
+# Skeleton CronJob for the cluster validation agent.
+# Real deployment goes through GitOps (Flux/ArgoCD); this is the unit.
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cluster-validator
+  namespace: platform-agents
+  labels:
+    app.kubernetes.io/name: cluster-validator
+    app.kubernetes.io/component: agent
+spec:
+  schedule: "0 2 * * *"  # nightly at 02:00
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        spec:
+          serviceAccountName: cluster-validator
+          restartPolicy: Never
+          containers:
+            - name: validator
+              image: registry.example.com/agent-engineering/cluster-validator:latest
+              imagePullPolicy: IfNotPresent
+              args: ["--cluster", "$(CLUSTER_NAME)", "--dry-run"]
+              env:
+                - name: CLUSTER_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace  # placeholder
+                - name: ANTHROPIC_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: validator-secrets
+                      key: anthropic-api-key
+                - name: POSTGRES_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: validator-secrets
+                      key: postgres-url
+                - name: LANGFUSE_HOST
+                  value: "http://langfuse.observability.svc.cluster.local:3000"
+                - name: LANGFUSE_PUBLIC_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: validator-secrets
+                      key: langfuse-public-key
+                - name: LANGFUSE_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: validator-secrets
+                      key: langfuse-secret-key
+                - name: SLACK_HITL_WEBHOOK
+                  valueFrom:
+                    secretKeyRef:
+                      name: validator-secrets
+                      key: slack-webhook
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 256Mi
+                limits:
+                  cpu: 500m
+                  memory: 1Gi
+              securityContext:
+                runAsNonRoot: true
+                runAsUser: 65532
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop: ["ALL"]
+              volumeMounts:
+                - name: tmp
+                  mountPath: /tmp
+          volumes:
+            - name: tmp
+              emptyDir: {}

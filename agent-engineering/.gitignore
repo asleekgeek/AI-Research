@@ -1,0 +1,55 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.pyright/
+.tox/
+
+# --- uv / venv ---
+.venv/
+venv/
+
+# --- Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Env / secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Local data ---
+*.sqlite
+*.sqlite3
+*.db
+checkpoints/
+scratchpads/
+.langfuse/
+
+# --- Eval artifacts ---
+phases/06-evals/results/
+phases/06-evals/baseline/
+
+# --- Logs ---
+*.log
+logs/
+
+# --- OS ---
+Thumbs.db
+ehthumbs.db

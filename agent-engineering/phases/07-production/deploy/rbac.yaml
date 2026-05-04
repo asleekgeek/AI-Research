@@ -1,0 +1,50 @@
+# Read-only RBAC for the cluster-validator agent.
+# Discovery phase needs broad reads; analyze and report add nothing more.
+# Write capability (HITL-gated) lives in a separate, namespaced ServiceAccount
+# that's only bound during approved write workflows — NOT bound here.
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cluster-validator
+  namespace: platform-agents
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-validator-read
+rules:
+  - apiGroups: [""]
+    resources:
+      - namespaces
+      - nodes
+      - pods
+      - services
+      - configmaps
+      - resourcequotas
+      - limitranges
+    verbs: ["get", "list"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "statefulsets", "daemonsets"]
+    verbs: ["get", "list"]
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["networkpolicies", "ingresses"]
+    verbs: ["get", "list"]
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources: ["roles", "rolebindings", "clusterroles", "clusterrolebindings"]
+    verbs: ["get", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cluster-validator-read
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-validator-read
+subjects:
+  - kind: ServiceAccount
+    name: cluster-validator
+    namespace: platform-agents

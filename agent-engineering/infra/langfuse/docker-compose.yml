@@ -1,0 +1,41 @@
+# Minimal docker-compose for local Langfuse. For production, use the official
+# Helm chart (langfuse/langfuse-k8s) — this file is for getting Phase 6 wired
+# without leaving the laptop.
+#
+# The official compose at https://github.com/langfuse/langfuse is more complete
+# and actively maintained; consider symlinking that into this directory once
+# you're past the laptop stage.
+
+services:
+  langfuse-db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: langfuse
+      POSTGRES_PASSWORD: langfuse_local
+      POSTGRES_DB: langfuse
+    volumes:
+      - langfuse-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U langfuse"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  langfuse:
+    image: langfuse/langfuse:latest
+    restart: unless-stopped
+    depends_on:
+      langfuse-db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://langfuse:langfuse_local@langfuse-db:5432/langfuse
+      NEXTAUTH_SECRET: change-me-locally
+      SALT: change-me-locally
+      NEXTAUTH_URL: http://localhost:3000
+      TELEMETRY_ENABLED: "false"
+
+volumes:
+  langfuse-db:

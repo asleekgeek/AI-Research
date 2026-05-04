@@ -1,0 +1,83 @@
+name: Eval
+
+# Phase 6+: regression gate for prompt / model / tool changes.
+# Runs the golden set against the candidate, compares to the baseline (main),
+# posts a structured summary, fails the run on regression.
+
+on:
+  pull_request:
+    paths:
+      - "phases/**"
+      - "shared/**"
+      - "pyproject.toml"
+      - "uv.lock"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: eval-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Only run if the eval-kit is wired up (skip during early phases of the curriculum).
+    if: ${{ hashFiles('phases/06-evals/src/eval_kit/runner.py') != '' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # need history for baseline comparison
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Sync workspace
+        run: uv sync --all-packages --frozen
+
+      - name: Run eval suite (candidate)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          uv run --package phase-06-evals eval-kit run \
+            --suite golden \
+            --output candidate.json
+
+      - name: Compare against baseline
+        run: |
+          uv run --package phase-06-evals eval-kit compare \
+            --baseline-ref origin/main \
+            --candidate candidate.json \
+            --output diff.md
+
+      - name: Post results to PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('diff.md', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body,
+            });
+
+      - name: Upload eval artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: |
+            candidate.json
+            diff.md
+          retention-days: 30
