@@ -1,0 +1,10 @@
+# macOS system files
+.DS_Store
+
+# Obsidian configuration
+.obsidian/
+
+# Unrelated vault directories
+Home/
+Songs/
+obsidian-git/
