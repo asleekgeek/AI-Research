@@ -45,6 +45,8 @@ export function App() {
     const cur = indexRef.current;
     const next = Math.max(0, Math.min(slides.length - 1, to));
     if (next === cur) return;
+    // Record the target now, so a second key press during the transition moves on from it.
+    indexRef.current = next;
     if (push) history.pushState(null, '', `#${slides[next].slug}`);
     const startVT = (document as any).startViewTransition?.bind(document);
     if (!startVT || matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -91,10 +93,14 @@ export function App() {
   }, [go]);
 
   const sectionStarts = useMemo(() => SECTIONS.map((s) => slides.findIndex((x) => x.section === s.key)), []);
+  // Handlers below read indexRef, not the render-time index: effects re-register after paint, so a
+  // key pressed right after a slide change would otherwise act on the previous slide.
+  const step = (delta: number) => go(indexRef.current + delta);
   const jumpSection = (delta: number) => {
-    const cur = SECTIONS.findIndex((s) => s.key === slide.section);
+    const here = indexRef.current;
+    const cur = SECTIONS.findIndex((s) => s.key === slides[here].section);
     const target = sectionStarts[Math.max(0, Math.min(SECTIONS.length - 1, cur + delta))];
-    if (delta < 0 && index !== sectionStarts[cur]) go(sectionStarts[cur]);
+    if (delta < 0 && here !== sectionStarts[cur]) go(sectionStarts[cur]);
     else go(target);
   };
 
@@ -107,9 +113,9 @@ export function App() {
       const k = e.key;
       let handled = true;
       if ((k === 'ArrowRight' || k === 'ArrowLeft') && e.shiftKey) jumpSection(k === 'ArrowRight' ? 1 : -1);
-      else if (k === 'ArrowRight' || k === 'PageDown') go(index + 1);
-      else if (k === 'ArrowLeft' || k === 'PageUp') go(index - 1);
-      else if (k === ' ' && !onButton) go(index + (e.shiftKey ? -1 : 1));
+      else if (k === 'ArrowRight' || k === 'PageDown') step(1);
+      else if (k === 'ArrowLeft' || k === 'PageUp') step(-1);
+      else if (k === ' ' && !onButton) step(e.shiftKey ? -1 : 1);
       else if (k === 'Home') go(0);
       else if (k === 'End') go(slides.length - 1);
       else if (k === 'o' || k === 'O') overview.open();
@@ -122,7 +128,7 @@ export function App() {
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  });
+  }, []);
 
   // Swipe left/right on touch screens, ignoring gestures that start inside sideways-scrolling frames.
   useEffect(() => {
@@ -135,7 +141,7 @@ export function App() {
       if (!armed) return;
       armed = false;
       const dx = e.clientX - x0, dy = e.clientY - y0;
-      if (Math.abs(dx) > 70 && Math.abs(dx) > 2 * Math.abs(dy) && e.timeStamp - t0 < 600) go(index + (dx < 0 ? 1 : -1));
+      if (Math.abs(dx) > 70 && Math.abs(dx) > 2 * Math.abs(dy) && e.timeStamp - t0 < 600) step(dx < 0 ? 1 : -1);
     };
     const main = document.getElementById('content');
     main?.addEventListener('pointerdown', down);
@@ -144,7 +150,7 @@ export function App() {
       main?.removeEventListener('pointerdown', down);
       main?.removeEventListener('pointerup', up);
     };
-  });
+  }, []);
 
   const secIdx = SECTIONS.findIndex((s) => s.key === slide.section);
   const Body = slide.Body;
@@ -214,7 +220,7 @@ export function App() {
       </main>
 
       <footer class="bottombar">
-        <button class="navbtn" type="button" onClick={() => go(index - 1)} disabled={index === 0}>
+        <button class="navbtn" type="button" onClick={() => step(-1)} disabled={index === 0}>
           <IconPrev />
           <span class="nav-label">Previous</span>
         </button>
@@ -247,7 +253,7 @@ export function App() {
             </span>
           </div>
         </div>
-        <button class="navbtn" type="button" onClick={() => go(index + 1)} disabled={index === slides.length - 1}>
+        <button class="navbtn" type="button" onClick={() => step(1)} disabled={index === slides.length - 1}>
           <span class="nav-label">Next</span>
           <IconNext />
         </button>
