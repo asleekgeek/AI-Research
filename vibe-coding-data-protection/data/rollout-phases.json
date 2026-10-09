@@ -1,0 +1,59 @@
+{
+  "title": "Rollout phases",
+  "date_of_record": "2026-10-09",
+  "columns": [
+    "phase",
+    "name",
+    "window",
+    "key_actions",
+    "exit_criterion",
+    "owner",
+    "evidence"
+  ],
+  "rows": [
+    {
+      "phase": "0",
+      "name": "Stop the bleeding",
+      "window": "Weeks 0–2",
+      "key_actions": "Inventory ask; inside-tenant exports; IdP/email/expense signals; outside-in search; team defaults set; Supabase grant, RPC, definer and trigger audit per project before 30 Oct 2026; rotate bundled keys; builder domains in SSE/DLP",
+      "exit_criterion": "Known estate registered; no unauthenticated app with non-public data; no secret key in any bundle",
+      "owner": "CISO with platform team",
+      "evidence": "Registry v0; discovery report; grant audit",
+      "confidence_codes": [],
+      "confidence_labels": []
+    },
+    {
+      "phase": "1",
+      "name": "Paved road",
+      "window": "Days 30–90",
+      "key_actions": "Enterprise tenant with SSO/SCIM; admin-owned connectors; registry schema live; tier policy; IdP proxy with origin validation; OIDC federation; push protection; DPA gap analysis; training tied to access",
+      "exit_criterion": "New apps reach data only via approved paths; every T1+ app has an owner",
+      "owner": "Platform architect; DPO for DPA",
+      "evidence": "Tenant config export; DPA gap analysis; training report",
+      "confidence_codes": [],
+      "confidence_labels": []
+    },
+    {
+      "phase": "2",
+      "name": "Deterministic gates",
+      "window": "Days 90–180",
+      "key_actions": "Blocking secrets/SCA/SAST pipeline incl. build-output scan; behavioural matrix per release; managed agent settings; read-only scoped MCP; masked dev branches; isolated immutable backups with drills; retention per sink; LLM gateway retention",
+      "exit_criterion": "Destructive agent action or broken policy cannot reach production unnoticed",
+      "owner": "Platform engineering; security architecture",
+      "evidence": "Pipeline logs; matrix results; restore RTO/RPO; managed-settings status",
+      "confidence_codes": [],
+      "confidence_labels": []
+    },
+    {
+      "phase": "3",
+      "name": "Run it",
+      "window": "Ongoing",
+      "key_actions": "Weekly outside-in scan; attestation cadence by tier; quarantine on departure or missed attestation; T0 expiry; honeytokens; annual tabletop per failure mode; quarterly exception review",
+      "exit_criterion": "Unowned apps cease to exist by construction; exceptions trend to zero",
+      "owner": "Governance board; AI Functional Leads",
+      "evidence": "KPI dashboard; exception register; tabletop records",
+      "confidence_codes": [],
+      "confidence_labels": []
+    }
+  ]
+}
