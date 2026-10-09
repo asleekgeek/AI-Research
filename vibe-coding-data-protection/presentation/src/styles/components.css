@@ -61,6 +61,7 @@
 .figtile .fig-denom { font-size: 0.84rem; color: var(--muted); line-height: 1.35; }
 .figtile .fig-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 0.78rem; color: var(--muted); margin-top: auto; padding-top: 4px; }
 .figref { font-size: 0.8em; white-space: nowrap; }
+figcaption .figref, .figref.long { white-space: normal; }
 
 /* ---- Paper tables ---- */
 .tbl-wrap { overflow: auto; max-width: 100%; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); container-type: inline-size; }

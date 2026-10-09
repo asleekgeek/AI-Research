@@ -1,0 +1,48 @@
+.s5-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; align-items: start; }
+@media (max-width: 960px) { .s5-two { grid-template-columns: minmax(0, 1fr); } }
+.s5-two > section { padding-top: 14px; border-top: 1px solid var(--line-strong); }
+.s5-two .h2 { font-size: 1.25rem; }
+.s5-notes { display: flex; flex-direction: column; gap: 6px; }
+.s5-verdict { font-family: var(--display); font-size: var(--step-1); font-weight: 600; border-left: 2px solid var(--accent); padding-left: 10px; }
+
+.s5-frac, .s5-range { display: flex; flex-direction: column; gap: 6px; }
+.s5-frac-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.s5-frac-label { font-size: 0.88rem; }
+.s5-frac-val { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); }
+.s5-cells { display: flex; flex-wrap: wrap; gap: 4px; }
+.s5-cells span { width: 16px; height: 16px; border-radius: 3px; background: var(--surface-2); border: 1px solid var(--line-strong); }
+.s5-cells span.on { background: var(--accent); border-color: var(--accent); }
+.s5-range-track { position: relative; height: 14px; border-radius: 7px; background: var(--surface-2); border: 1px solid var(--line); overflow: hidden; }
+.s5-range-fill { position: absolute; top: 0; bottom: 0; background: var(--accent); border-radius: 7px; }
+
+.s5-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.8rem; color: var(--muted); }
+.s5-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.s5-sw { display: inline-block; width: 12px; height: 12px; border-radius: 2px; }
+.s5-sw-0 { background: color-mix(in srgb, var(--accent) 25%, var(--surface-2)); }
+.s5-sw-1 { background: var(--lane-2); }
+.s5-sw-2 { background: var(--accent); }
+.s5-groups { display: flex; flex-direction: column; gap: 10px; }
+.s5-group { display: grid; grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr); gap: 10px; align-items: center; }
+.s5-group-name { font-size: 0.86rem; font-weight: 600; }
+.s5-gbar { position: relative; height: 14px; background: var(--surface-2); border-radius: 2px; overflow: hidden; }
+.s5-gfill { position: absolute; inset-block: 0; left: 0; border-radius: 2px; }
+.s5-gval { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 0.68rem; color: var(--fg); }
+
+.s5-evidence { list-style: none; padding: 0; display: flex; flex-direction: column; border-left: 2px solid var(--line-strong); margin-left: 6px; }
+.s5-evidence li { position: relative; padding: 8px 0 8px 18px; font-size: 0.95rem; }
+.s5-evidence li::before { content: ''; position: absolute; left: -7px; top: 13px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+.s5-evidence li.no::before { background: var(--surface); border: 2px dashed var(--po); }
+.s5-ev-state { display: inline-block; min-width: 7.5rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--cp); }
+.s5-evidence li.no .s5-ev-state { color: var(--po); }
+
+.s5-ladder { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 12px; }
+.s5-ladder-axis { position: relative; border-right: 2px solid var(--accent); }
+.s5-ladder-axis::before { content: ''; position: absolute; right: -7px; top: -2px; border: 6px solid transparent; border-bottom: 9px solid var(--accent); border-top: 0; }
+.s5-ladder-axis span { position: absolute; top: 50%; left: 50%; transform: translate(-60%, -50%) rotate(-90deg); white-space: nowrap; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.s5-rungs { display: flex; flex-direction: column; gap: 8px; }
+.s5-rung { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 4fr); gap: 10px 20px; padding: 12px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.s5-rung[data-rung='5'] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.s5-rung[data-rung='0'] { background: var(--surface-2); }
+.s5-rung-name, .s5-rung-ev, .s5-rung-verdict { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.s5-rung-verdict strong { font-weight: 600; font-size: 0.93rem; line-height: 1.4; }
+@media (max-width: 860px) { .s5-rung { grid-template-columns: minmax(0, 1fr); } .s5-ladder { grid-template-columns: 1.6rem minmax(0, 1fr); } }

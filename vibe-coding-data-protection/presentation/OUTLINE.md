@@ -48,7 +48,8 @@ Proposal written before the build, per the hand-over's starting prompt. The buil
 | 4 | `s04-discovery` | Wildcard certificates and the discovery pipeline | Figure #8, #43 |
 | 5 | `s05-benchmarks` | SusVibes and Veracode with denominators | Figures #18–21 |
 | 5 | `s05-prompting` | Prompting, iteration, skills | Figures #17, #22–24 |
-| 5 | `s05-review-packages` | AI review recall; hallucinated packages | Figures #25–31, #49 |
+| 5 | `s05-ai-review` | AI review recall | Figures #25–27, #49 |
+| 5 | `s05-packages` | Hallucinated packages; CVEs attributed to AI code | Figures #28–31 |
 | 5 | `s05-population` | The one random-sample study | Figures #14–16 |
 | 5 | `s05-ladder` | Revised determinism ladder | §5.9 table |
 | 6 | `s06-forecast-vs-observation` | Gartner/CSA, named organisations | Figures #35, #36 |
@@ -77,3 +78,8 @@ Proposal written before the build, per the hand-over's starting prompt. The buil
 4. **Legal content.** §7 slides carry the paper's "not legal advice; qualified legal review required" notice; a test checks it.
 5. **Date of record.** Slides showing vendor defaults, prices or regulatory status carry the 8–9 October 2026 badge; a test checks it.
 6. **Do not rewrite.** Slide copy condenses; the paper's own text for every slide is one keypress away (`S`).
+
+## Deviations from this outline
+
+- §5 "AI review and packages" became two slides (`s05-ai-review`, `s05-packages`) to keep each readable at phone width.
+- §4.4.5–4.4.6 (other BaaS, bundle secrets) got their own slide, `s04-b3-other-baas`.
