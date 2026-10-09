@@ -223,6 +223,7 @@ const slides: SlideDef[] = [
     short: 'Incident timeline',
     dek: 'Incidents, large-scale scans, disclosures and the vendor and regulatory changes that followed, on one time axis drawn to scale.',
     paper: ['3.2', 'appendix-b'],
+    flags: { dated: true },
     Body: IncidentTimeline,
   },
   {
@@ -240,6 +241,7 @@ const slides: SlideDef[] = [
     title: 'Which layer failed, and the one control that would have interrupted it',
     short: 'Layer attribution',
     paper: ['3.5'],
+    flags: { dated: true },
     Body: Attribution,
   },
 ];

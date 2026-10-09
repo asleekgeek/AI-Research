@@ -47,3 +47,13 @@ A research hand-over. It contains a finished practitioner paper on how companies
 - Static, self-contained output preferred (single HTML or a small Vite/React/Next.js app that builds to static files). Must work at phone width and in light and dark themes.
 - Keyboard navigation for slides; deep links to sections.
 - Every chart drawn to scale from the JSON; no illustrative numbers.
+
+## The presentation (built)
+
+The interactive presentation lives in `presentation/` (Vite + Preact via the React API, building to one self-contained `dist/index.html`). Read `presentation/AUTHORING.md` before changing a slide. Before committing, run from `presentation/`:
+
+```bash
+npm run check   # extract paper, type-check, build, vitest data checks, Playwright guards
+```
+
+The Playwright guards enforce rules 1–5 above on the built file: every number on every slide must occur in the paper or the data files; figure tiles keep their chip and source link; §8 slides show the PROP banner; §7 slides show the legal disclaimer; dated sections show the date of record.
