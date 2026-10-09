@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef, useState } from 'react';
 import { fig } from '../lib/data';
 import type { BarSpec } from '../lib/charts';
 import { Chips } from './Chip';
@@ -31,7 +32,6 @@ export function Bars({ specs, max, unit = '', caption, labelWidth }: Props) {
           const ok = verifySpec(s);
           if (!ok) console.error(`Unverified bar: key figure ${s.n} does not contain "${s.display}" with value ${s.value}`);
           const pct = Math.max(0, Math.min(100, (s.value / max) * 100));
-          const inside = pct > 30;
           return (
             <div class="bar-row" key={i} style={labelWidth ? { gridTemplateColumns: `minmax(0, ${labelWidth}) minmax(0, 1fr)` } : undefined}>
               <div class="bar-label">
@@ -42,19 +42,14 @@ export function Bars({ specs, max, unit = '', caption, labelWidth }: Props) {
                   </strong>
                 )}
               </div>
-              <div class="bar-track" role="img" aria-label={`${s.label}: ${s.display}`}>
-                <div class={`bar-fill${s.tone ? ` ${s.tone}` : ''}`} style={{ width: `${pct}%` }} />
-                <span class="bar-val" style={inside ? { left: 0, color: s.tone === 'ghost' ? 'var(--fg)' : 'var(--accent-ink)' } : { left: `${pct}%` }}>
-                  {s.display}
-                </span>
-              </div>
+              <BarTrack spec={s} pct={pct} />
             </div>
           );
         })}
       </div>
       <figcaption>
         <span class="scale-note" data-chrome>
-          Linear scale, 0 to {max}
+          Linear scale, 0 to {max.toLocaleString('en-GB')}
           {unit}.
         </span>{' '}
         {caption}{' '}
@@ -69,5 +64,44 @@ export function Bars({ specs, max, unit = '', caption, labelWidth }: Props) {
         ))}
       </figcaption>
     </figure>
+  );
+}
+
+/** The value label sits inside the bar when it fits, else just past its end, else under the track. */
+function BarTrack({ spec, pct }: { spec: BarSpec; pct: number }) {
+  const track = useRef<HTMLDivElement>(null);
+  const label = useRef<HTMLSpanElement>(null);
+  const [place, setPlace] = useState<'inside' | 'right' | 'below'>('right');
+  useLayoutEffect(() => {
+    const t = track.current;
+    const l = label.current;
+    if (!t || !l) return;
+    const measure = () => {
+      const tw = t.clientWidth;
+      const fw = (tw * pct) / 100;
+      const lw = l.scrollWidth;
+      setPlace(lw + 8 <= fw ? 'inside' : fw + lw + 8 <= tw ? 'right' : 'below');
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(t);
+    return () => ro.disconnect();
+  }, [pct]);
+  const ink = spec.tone === 'ghost' ? 'var(--fg)' : 'var(--accent-ink)';
+  return (
+    <div class="bar-cell">
+      <div class="bar-track" ref={track} role="img" aria-label={spec.display}>
+        <div class={`bar-fill${spec.tone ? ` ${spec.tone}` : ''}`} style={{ width: `${pct}%` }} />
+        <span
+          ref={label}
+          class="bar-val"
+          aria-hidden="true"
+          style={place === 'inside' ? { left: 0, color: ink } : place === 'right' ? { left: `${pct}%` } : { left: 0, visibility: 'hidden' }}
+        >
+          {spec.display}
+        </span>
+      </div>
+      {place === 'below' && <span class="bar-val-below">{spec.display}</span>}
+    </div>
   );
 }
