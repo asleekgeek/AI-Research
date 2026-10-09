@@ -1,0 +1,27 @@
+{
+  "name": "vibe-coding-data-protection-presentation",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Interactive presentation of the paper 'Boundaries, not prompts, contain vibe-coded leaks' (date of record 8-9 October 2026).",
+  "type": "module",
+  "scripts": {
+    "extract": "node scripts/extract-paper.mjs",
+    "dev": "npm run extract && vite",
+    "build": "npm run extract && tsc --noEmit && vite build && node scripts/make-artifact.mjs",
+    "preview": "vite preview",
+    "test": "npm run extract && vitest run",
+    "test:e2e": "playwright test",
+    "check": "npm run build && npm test && npm run test:e2e"
+  },
+  "dependencies": {
+    "preact": "10.29.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "22.18.8",
+    "typescript": "5.9.3",
+    "vite": "7.3.5",
+    "vite-plugin-singlefile": "2.3.3",
+    "vitest": "3.2.7"
+  }
+}
