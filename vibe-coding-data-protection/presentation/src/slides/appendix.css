@@ -1,0 +1,46 @@
+/* Appendix: key-figure explorer and colophon. Every class is prefixed ax-. */
+
+.ax-intro { max-width: 80ch; }
+.ax-filters { align-items: flex-end; }
+.ax-filters .seg button { display: inline-flex; align-items: center; gap: 6px; }
+.ax-filters .count { margin-left: auto; }
+.ax-search .search { width: min(100%, 280px); }
+@media (max-width: 620px) {
+  .ax-code-name { position: absolute; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; white-space: nowrap; }
+  .ax-filters .count { margin-left: 0; }
+  .ax-search, .ax-search .search { width: 100%; }
+}
+.ax-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 14px; align-items: stretch; }
+.ax-grid > li { display: flex; min-width: 0; }
+.ax-grid .figtile { flex: 1; }
+.ax-grid .fig-value { font-size: var(--step-2); }
+.ax-empty { padding: 18px; border: 1px dashed var(--line-strong); border-radius: var(--radius); color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.ax-reset { border: 1px solid var(--line-strong); background: var(--surface); border-radius: 999px; padding: 4px 12px; font-size: 0.84rem; cursor: pointer; min-block-size: 30px; }
+
+/* Colophon: two columns of short sections under one full-width statement. */
+.ax-colo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px clamp(24px, 4vw, 56px); align-items: start; }
+.ax-span { grid-column: 1 / -1; }
+@media (max-width: 860px) { .ax-colo { grid-template-columns: minmax(0, 1fr); } }
+.ax-block { display: flex; flex-direction: column; gap: 10px; min-width: 0; border-top: 1px solid var(--line-strong); padding-top: 12px; }
+.ax-block p, .ax-block li { line-height: 1.5; }
+.ax-title { font-style: italic; font-family: var(--display); }
+.ax-not { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 24px; }
+.ax-not li { font-size: 0.94rem; padding-left: 12px; border-left: 2px solid var(--line-strong); }
+.ax-not strong { display: block; font-family: var(--display); font-size: var(--step-1); font-weight: 600; }
+@media (max-width: 760px) { .ax-not { grid-template-columns: minmax(0, 1fr); } }
+.ax-strands { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.ax-strands li { font-size: 0.82rem; padding: 2px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.ax-codes { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr)); gap: 6px 14px; font-size: 0.9rem; }
+.ax-codes .chip { min-width: 3.4rem; justify-content: center; margin-right: 4px; }
+.ax-rules { list-style: none; padding: 0; counter-reset: axr; display: flex; flex-direction: column; gap: 9px; }
+.ax-rules li { counter-increment: axr; display: grid; grid-template-columns: 1.9rem minmax(0, 1fr); gap: 8px; font-size: 0.92rem; }
+.ax-rules li::before { content: counter(axr); font-family: var(--mono); font-size: 0.76rem; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line)); border-radius: 50%; width: 1.6rem; height: 1.6rem; display: grid; place-items: center; }
+.ax-rules strong { font-weight: 600; }
+.ax-list { display: flex; flex-direction: column; gap: 8px; padding-left: 1.1em; font-size: 0.92rem; }
+.keys.ax-keys { display: flex; flex-direction: column; gap: 6px; }
+.ax-key { display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 4px 14px; align-items: baseline; }
+.ax-key dt { display: flex; flex-wrap: wrap; gap: 4px; }
+.ax-key dd { margin: 0; }
+@media (max-width: 520px) { .ax-key { grid-template-columns: minmax(0, 1fr); } }
+
+.ax-quote { margin: 0; }

@@ -1,0 +1,588 @@
+{
+  "title": "Controls by boundary",
+  "date_of_record": "2026-10-09",
+  "columns": [
+    "boundary",
+    "control",
+    "enforcement_locus",
+    "verdict",
+    "bypass_limitation",
+    "evidence_tier"
+  ],
+  "rows": [
+    {
+      "boundary": "B1 Builder identity",
+      "control": "Workspace SSO and SCIM for console",
+      "enforcement_locus": "Builder tenant + IdP",
+      "verdict": "Prevents personal-account use only if combined with SSE blocking of personal sign-in",
+      "bypass_limitation": "Personal accounts outside tenant; Lovable Business MCP clients enabled by default",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B1 Builder identity",
+      "control": "\"Who can publish externally\" restricted to admins (Lovable); \"Private deployments: Require\" (Replit); \"Apps SSO\" (Base44)",
+      "enforcement_locus": "Builder tenant admin policy",
+      "verdict": "Prevents public publish",
+      "bypass_limitation": "Lovable per-project override unless rights restricted; Replit not retroactive; Base44 embedding default Anyone",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B1 Builder identity",
+      "control": "Admin-owned connectors (\"who can create connections\" = No one on Lovable Enterprise)",
+      "enforcement_locus": "Builder tenant",
+      "verdict": "Prevents unsanctioned data sources",
+      "bypass_limitation": "Enterprise SKU only",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B1 Builder identity",
+      "control": "Enforced scan-block on publish (critical, PII)",
+      "enforcement_locus": "Builder tenant",
+      "verdict": "Detects presence-level defects",
+      "bypass_limitation": "Disabled by default except new Lovable Enterprise workspaces; blind to logic",
+      "evidence_tier": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "boundary": "B1 Builder identity",
+      "control": "Inventory export with owner and connectors (Lovable Security insights, Power Platform inventory, ServiceNow)",
+      "enforcement_locus": "Builder tenant",
+      "verdict": "Enables registry and lifecycle",
+      "bypass_limitation": "Not available on Vercel, Netlify, Bolt, Base44, v0",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B1 Builder identity",
+      "control": "DPA gap analysis (controller carve-outs, training, audit rights, backup persistence)",
+      "enforcement_locus": "Contract",
+      "verdict": "Enables Art. 28 compliance",
+      "bypass_limitation": "Standard terms fall short of DORA 30(3)(e)",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B2 Ingress",
+      "control": "Team default \"All Deployments\" (Vercel) / visitor defaults (Netlify)",
+      "enforcement_locus": "Hosting platform",
+      "verdict": "Prevents public production by default",
+      "bypass_limitation": "Project/site override; Vercel Authentication admits Vercel accounts only",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B2 Ingress",
+      "control": "Vercel Passport / Base44 Apps SSO / Power Platform Conditional Access",
+      "enforcement_locus": "Hosting platform + IdP",
+      "verdict": "Prevents anonymous access with workforce identity",
+      "bypass_limitation": "Passport Enterprise, OIDC/OAuth only; Passport default project-overridable",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B2 Ingress",
+      "control": "Identity-aware proxy with origin token validation",
+      "enforcement_locus": "Proxy + origin",
+      "verdict": "Prevents for the proxied hostname",
+      "bypass_limitation": "Platform subdomain and BaaS API stay reachable; passthrough modes",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B2 Ingress",
+      "control": "Protected source maps (Vercel)",
+      "enforcement_locus": "Hosting platform",
+      "verdict": "Limits code exposure",
+      "bypass_limitation": "Does not protect inlined keys; existing projects opt in",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B2 Ingress",
+      "control": "Password protection / shareable links",
+      "enforcement_locus": "Hosting platform",
+      "verdict": "Weak",
+      "bypass_limitation": "Shared secret; no per-user revocation",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B2 Ingress",
+      "control": "Tailscale Funnel",
+      "enforcement_locus": "n/a",
+      "verdict": "Anti-pattern",
+      "bypass_limitation": "No visitor auth; all members may enable by default",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "Explicit table grants (30 Oct 2026 default)",
+      "enforcement_locus": "Postgres privileges",
+      "verdict": "Prevents new-table auto-exposure",
+      "bypass_limitation": "Existing tables keep grants; direct connections and custom schemas excluded",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "Revoke default function EXECUTE from anon/authenticated/public",
+      "enforcement_locus": "Postgres default privileges",
+      "verdict": "Prevents anonymous RPC",
+      "bypass_limitation": "Not included in 30 Oct change; must be applied explicitly",
+      "evidence_tier": "CP/INF",
+      "confidence_codes": [
+        "CP",
+        "INF"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary",
+        "Author-inference"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "RLS enabled with tenant-bound policies (TO clause, app_metadata, USING + WITH CHECK)",
+      "enforcement_locus": "Postgres RLS",
+      "verdict": "Prevents cross-tenant access when correct",
+      "bypass_limitation": "Permissive or inverted logic passes presence checks; definer functions and views bypass",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "RLS auto-enable event trigger",
+      "enforcement_locus": "Postgres event trigger",
+      "verdict": "Prevents RLS-off tables created by agents",
+      "bypass_limitation": "Opt-in per project; postgres-only; adds no grants or policies; public schema only",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "`security_invoker` on views; `SECURITY INVOKER` functions with pinned search_path",
+      "enforcement_locus": "Postgres",
+      "verdict": "Prevents owner-privilege bypass",
+      "bypass_limitation": "Must be set per object; lints 0010, 0011, 0028, 0029 detect",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "Column-level privileges for PII",
+      "enforcement_locus": "Postgres",
+      "verdict": "Limits column exposure",
+      "bypass_limitation": "Breaks `select *`; \"advanced feature\"",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "Behavioural authorisation matrix (pgTAP + HTTP) in CI",
+      "enforcement_locus": "Test pipeline",
+      "verdict": "Detects logic errors (only check that does)",
+      "bypass_limitation": "Coverage limited to tested principals and surfaces",
+      "evidence_tier": "CP/PROP",
+      "confidence_codes": [
+        "CP",
+        "PROP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary",
+        "Proposal"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "Least-privilege BFF forwarding user JWT (Path B1) or non-BYPASSRLS role (B3)",
+      "enforcement_locus": "Server tier + Postgres",
+      "verdict": "Prevents and adds audit/rate limiting",
+      "bypass_limitation": "Confused deputy if secret key used without tenant binding",
+      "evidence_tier": "CP/INF",
+      "confidence_codes": [
+        "CP",
+        "INF"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary",
+        "Author-inference"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "Governed connector platforms (Superblocks, Retool, ServiceNow)",
+      "enforcement_locus": "Platform",
+      "verdict": "Prevents direct data access by construction",
+      "bypass_limitation": "Platform lock-in; cost",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "Secret keys never in clients; publishable keys only",
+      "enforcement_locus": "Key design",
+      "verdict": "Prevents RLS bypass from browser",
+      "bypass_limitation": "Secret key still usable from curl if leaked",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "Build-output secret scanning (Netlify smart detection or custom grep)",
+      "enforcement_locus": "CI/build",
+      "verdict": "Detects inlined secrets",
+      "bypass_limitation": "Repo-only scanners miss NEXT_PUBLIC_/VITE_",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "Repository push protection; Supabase auto-revocation",
+      "enforcement_locus": "Repo / vendor",
+      "verdict": "Detects committed secrets",
+      "bypass_limitation": "Off by default; paid; post-commit for Supabase",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B3 Data API",
+      "control": "Firebase production-mode rules; App Check",
+      "enforcement_locus": "Firebase rules",
+      "verdict": "Prevents client access by default",
+      "bypass_limitation": "Test mode allows anyone; App Check \"prevents some, but not all\"",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "Sandbox enabled, fail-closed, no unsandboxed retry (managed)",
+      "enforcement_locus": "OS sandbox",
+      "verdict": "Limits shell-command blast radius",
+      "bypass_limitation": "File tools, MCP, hooks outside; native Windows unsandboxed",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "Egress allowlist locked by admin (Claude Code, Cursor, Copilot org allowlist)",
+      "enforcement_locus": "Network proxy",
+      "verdict": "Limits destinations",
+      "bypass_limitation": "Allowlisted hosts accept uploads; MCP traffic not covered",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "Credential deny/mask with injectHosts; env scrub; Read() deny on secret paths",
+      "enforcement_locus": "Agent config",
+      "verdict": "Prevents agent reading secrets",
+      "bypass_limitation": "No built-in credential deny list; must enumerate",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "Managed MCP allowlist; read-only project-scoped MCP; manual approval",
+      "enforcement_locus": "Agent config + MCP server",
+      "verdict": "Limits MCP exposure",
+      "bypass_limitation": "Approval \"a guardrail, not a guarantee\"; read-only still permits reads",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "Dev/prod database separation (Replit); data-less branches (Supabase); anonymised branches (Neon)",
+      "enforcement_locus": "Platform",
+      "verdict": "Prevents production mutation by agent",
+      "bypass_limitation": "Shared staging still destroyable; publish-time structural changes",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "OIDC federation / short-lived scoped tokens; project-scoped tokens where scoping absent",
+      "enforcement_locus": "Cloud IAM / platform",
+      "verdict": "Prevents over-scoped credential reach",
+      "bypass_limitation": "Railway has no scoped tokens as of Oct 2026",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "Provider soft-delete windows",
+      "enforcement_locus": "Platform",
+      "verdict": "Limits (recovery)",
+      "bypass_limitation": "Credential can purge or wait out",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "Isolated immutable backups (LAG vault + optional MPA; locked Azure vault + Resource Guard; GCP enforced retention; object lock) with restore drills",
+      "enforcement_locus": "Separate account/tenant storage",
+      "verdict": "Limits (recovery)",
+      "bypass_limitation": "Minimum retention; account closure; RPO by schedule",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "Internal registry proxy as sole package source; lockfiles and hash pinning",
+      "enforcement_locus": "Egress + CI",
+      "verdict": "Prevents hallucinated package install",
+      "bypass_limitation": "Curation quality; Socket free tier warns only on AI-suspected",
+      "evidence_tier": "CP/PROP",
+      "confidence_codes": [
+        "CP",
+        "PROP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary",
+        "Proposal"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "Platform guardrails (Copilot: no default-branch push, approval for Actions, 59-min sessions)",
+      "enforcement_locus": "Cloud agent platform",
+      "verdict": "Prevents direct production merge",
+      "bypass_limitation": "Repo rulesets incompatible block the agent",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "B4 Agent plane",
+      "control": "Repository config inspection before opening; pinned agent versions above CVE fixes",
+      "enforcement_locus": "Process + managed settings",
+      "verdict": "Prevents pre-trust execution",
+      "bypass_limitation": "Relies on discipline; new issues possible",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "Cross-cutting",
+      "control": "App registry with owner, data class, expiry, processing-activity link",
+      "enforcement_locus": "Governance",
+      "verdict": "Enables lifecycle and Art. 24 evidence",
+      "bypass_limitation": "Expiry and ROPA-link fields have no precedent",
+      "evidence_tier": "CP/PROP",
+      "confidence_codes": [
+        "CP",
+        "PROP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary",
+        "Proposal"
+      ]
+    },
+    {
+      "boundary": "Cross-cutting",
+      "control": "Quarantine / Block kill switch (Power Platform), unpublish, connector revoke",
+      "enforcement_locus": "Platform admin",
+      "verdict": "Limits exposure duration",
+      "bypass_limitation": "Not available with same granularity on consumer builders",
+      "evidence_tier": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "boundary": "Cross-cutting",
+      "control": "Outside-in discovery pipeline",
+      "enforcement_locus": "Security operations",
+      "verdict": "Detects shadow apps",
+      "bypass_limitation": "CT blind for platform subdomains; attribution by content",
+      "evidence_tier": "CP/VR",
+      "confidence_codes": [
+        "CP",
+        "VR"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary",
+        "Vendor-reported"
+      ]
+    },
+    {
+      "boundary": "Cross-cutting",
+      "control": "Training tied to tool access",
+      "enforcement_locus": "HR + IdP",
+      "verdict": "Enables Art. 4 evidence",
+      "bypass_limitation": "No outcome evidence",
+      "evidence_tier": "CP/INF",
+      "confidence_codes": [
+        "CP",
+        "INF"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary",
+        "Author-inference"
+      ]
+    }
+  ]
+}

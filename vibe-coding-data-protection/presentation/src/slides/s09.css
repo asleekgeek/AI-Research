@@ -1,0 +1,62 @@
+/* §9 verification tests (and the property pills shared with §10). Tokens only; classes prefixed t9-. */
+
+/* Property pills: the shared Verdict pill, allowed to wrap because the paper's Property text is long. */
+.verdict.v-reduces { color: var(--inf); border-color: color-mix(in srgb, var(--inf) 45%, var(--line)); }
+.verdict.v-unevidenced { color: var(--muted); border-style: dashed; }
+.t9 .verdict, .t10 .verdict, .t10-none-band .verdict { white-space: normal; align-items: flex-start; line-height: 1.3; text-align: left; border-radius: 12px; }
+.t9 .verdict svg, .t10 .verdict svg { flex-shrink: 0; margin-top: 1px; }
+
+.t9 { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(18px, 3vw, 40px); align-items: start; }
+.t9-side { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.t9-list { display: flex; flex-direction: column; border-top: 1px solid var(--line-strong); }
+.t9-tab {
+  display: grid; grid-template-columns: 2rem minmax(0, 1fr) 1.2rem; gap: 10px; align-items: start; text-align: left;
+  border: 0; border-bottom: 1px solid var(--line); background: none; padding: 9px 10px 9px 6px; cursor: pointer; font-size: 0.9rem; line-height: 1.35;
+  border-left: 3px solid transparent; color: var(--fg);
+}
+.t9-tab:hover { background: var(--surface); }
+.t9-tab[aria-selected='true'] { background: var(--accent-soft); border-left-color: var(--accent); }
+.t9-tab[aria-selected='true'] .t9-tab-inv { font-weight: 600; }
+.t9-num {
+  font-family: var(--mono); font-size: 0.78rem; color: var(--accent); width: 1.75rem; height: 1.75rem; display: grid; place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line)); border-radius: 50%; background: var(--surface);
+}
+.t9-tab[aria-selected='true'] .t9-num { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.t9-tab-inv { padding-top: 3px; }
+.t9-mark { padding-top: 4px; color: var(--accent); }
+.t9-mark svg, .t9-legend svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.t9-legend { display: inline-block; vertical-align: -3px; color: var(--accent); }
+
+.t9-panels { position: sticky; top: calc(var(--bar-h) + 14px); min-width: 0; }
+.t9-panel:focus-visible { outline-offset: 4px; }
+.t9-panel-body { display: flex; flex-direction: column; gap: 18px; padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.t9-inv-title { font-family: var(--display); font-weight: 600; font-size: var(--step-3); line-height: 1.15; }
+.t9-scenario { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; counter-reset: none; }
+.t9-scenario > li { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface-2); min-width: 0; }
+.t9-scenario > li.is-pass { border-color: color-mix(in srgb, var(--cp) 55%, var(--line)); background: var(--cp-bg); }
+.t9-scenario > li + li::before { content: ''; position: absolute; left: -18px; top: 50%; width: 14px; border-top: 2px solid var(--line-strong); }
+.t9-scenario > li + li::after { content: ''; position: absolute; left: -8px; top: calc(50% - 4px); border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 7px solid var(--line-strong); }
+.t9-scn-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.t9-scenario > li.is-pass .t9-scn-label { color: var(--cp); }
+.t9-scn-text { font-size: 0.92rem; line-height: 1.45; }
+
+.t9-cited { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--line); padding-top: 14px; }
+.t9-cited-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.t9-cited-list > li { display: flex; flex-direction: column; gap: 4px; padding-left: 12px; border-left: 2px solid var(--line-strong); }
+.t9-cited-head { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: flex-start; font-size: 0.92rem; }
+.t9-go { align-self: flex-start; font-size: 0.9rem; font-weight: 500; }
+.t9-go::after { content: ' →'; }
+
+@media (max-width: 1100px) { .t9-scenario { grid-template-columns: minmax(0, 1fr); gap: 16px; } .t9-scenario > li + li::before { left: 22px; top: -14px; width: 0; height: 10px; border-top: 0; border-left: 2px solid var(--line-strong); } .t9-scenario > li + li::after { left: 18px; top: -7px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--line-strong); border-bottom: 0; } }
+
+/* Phone and narrow tablet: the list becomes a grid of numbered buttons above the panel. */
+@media (max-width: 760px) {
+  .t9 { grid-template-columns: minmax(0, 1fr); }
+  .t9-panels { position: static; }
+  .t9-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; border-top: 0; }
+  .t9-tab { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  .t9-tab[aria-selected='true'] { border-color: var(--accent); border-left-color: var(--accent); }
+  .t9-tab-inv { position: absolute !important; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; white-space: nowrap; }
+  .t9-mark { padding-top: 0; height: 15px; }
+  .t9-panel-body { padding: 14px; }
+}

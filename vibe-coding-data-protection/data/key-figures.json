@@ -1,0 +1,742 @@
+{
+  "title": "Key figures",
+  "date_of_record": "2026-10-09",
+  "columns": [
+    "figure",
+    "value",
+    "unit_denominator",
+    "source_url",
+    "date",
+    "confidence"
+  ],
+  "rows": [
+    {
+      "figure": "Lovable showcase projects exploitable (CVE-2025-48757)",
+      "value": "170 of 1,645 (10.3%)",
+      "unit_denominator": "Projects, homepage-only crawl; 303 endpoints",
+      "source_url": "https://mattpalmer.io/posts/statement-on-CVE-2025-48757/",
+      "date": "21 Mar 2025",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "CVE-2025-48757 CVSS",
+      "value": "8.26 (researcher, S:U) vs 9.3 (MITRE, S:C)",
+      "unit_denominator": "CVSS v3.1 base",
+      "source_url": "https://cveawg.mitre.org/api/cve/CVE-2025-48757",
+      "date": "30 May 2025",
+      "confidence": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "figure": "Moltbook records exposed",
+      "value": "~4.75M records; 1.5M agent API tokens; 4,060 DMs",
+      "unit_denominator": "Records in one Supabase project",
+      "source_url": "https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys",
+      "date": "2 Feb 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Moltbook remediation",
+      "value": "4 fixes in 3 h 12 min",
+      "unit_denominator": "21:48 to 01:00 UTC",
+      "source_url": "https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys",
+      "date": "31 Jan–1 Feb 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "EdTech app records exposed",
+      "value": "18,697 users; 4,538 students; 870 full PII",
+      "unit_denominator": "Records in one app",
+      "source_url": "https://theregister.com/2026/02/27/lovable_app_vulnerabilities",
+      "date": "27 Feb 2026",
+      "confidence": "PO",
+      "confidence_codes": [
+        "PO"
+      ],
+      "confidence_labels": [
+        "Press-only"
+      ]
+    },
+    {
+      "figure": "Symbiotic scan: apps with a finding",
+      "value": "1,046 of 1,072 (98%); 173 (16%) critical",
+      "unit_denominator": "Supabase-backed sites scanned",
+      "source_url": "https://www.symbioticsec.ai/blog/we-scanned-1-072-vibe-coded-apps-98-had-security-flaws",
+      "date": "2 Jun 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Symbiotic: unauthenticated DELETE and PATCH",
+      "value": "172 sites each",
+      "unit_denominator": "Of 1,072",
+      "source_url": "https://www.symbioticsec.ai/blog/we-scanned-1-072-vibe-coded-apps-98-had-security-flaws",
+      "date": "2 Jun 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Symbiotic discovery source yield",
+      "value": "Dorking 58.2%; Common Crawl 23.1%; DNS 13.7%; crt.sh 4.8%",
+      "unit_denominator": "Of 1,085 confirmed sites",
+      "source_url": "https://www.symbioticsec.ai/blog/we-scanned-1-072-vibe-coded-apps-98-had-security-flaws",
+      "date": "2 Jun 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Escape: apps tested",
+      "value": "1,400 (of 5,600 discovered web apps; 14,600 assets)",
+      "unit_denominator": "Applications",
+      "source_url": "https://26857953.fs1.hubspotusercontent-eu1.net/hubfs/26857953/State-Security-Vibe%20Coded%20Apps%20Report%202025%20Escape.pdf",
+      "date": "29 Oct 2025",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Escape: findings and secrets",
+      "value": "34,232 findings; 400+ secrets; 175 PII instances",
+      "unit_denominator": "Across 1,400 apps",
+      "source_url": "https://26857953.fs1.hubspotusercontent-eu1.net/hubfs/26857953/State-Security-Vibe%20Coded%20Apps%20Report%202025%20Escape.pdf",
+      "date": "29 Oct 2025",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "RedAccess sweep",
+      "value": "380,000+ assets; 5,000 corporate-purpose; 2,000 (40%) sensitive without controls",
+      "unit_denominator": "Assets then apps, method undisclosed",
+      "source_url": "https://info.redaccess.io/hubfs/1627The%20Shadow%20Builders%20Inside%20Your%20Organization%20%E2%80%94%20Red%20Access%20Research%20(1).pdf",
+      "date": "May 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "UpGuard: Supabase databases with readable tables",
+      "value": "16,326; >50% with PII indicators",
+      "unit_denominator": "Of ~300,000 domains probed",
+      "source_url": "https://www.upguard.com/blog/everything-everywhere-systemic-data-exposure-in-supabase-apps",
+      "date": "24 Sep 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Reeve: apps with a readable table",
+      "value": "2,096 of 3,680 checkable (57%)",
+      "unit_denominator": "30,998 apps swept; 3,553 of checkable were Lovable",
+      "source_url": "https://reeve.page/research/vibe-coded-app-security-2026",
+      "date": "19 Aug 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Deng, Fan, Meng: deployed vibe apps vulnerable",
+      "value": "182 of 200 (91.0%); 1,186 confirmed vulnerabilities",
+      "unit_denominator": "Random sample of deployed apps, two-author confirmation",
+      "source_url": "https://arxiv.org/html/2606.23130v4",
+      "date": "14 Sep 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Deng, Fan, Meng: Broken Access Control",
+      "value": "339 findings (28.58%); present in 64.0% of apps; 77% backend",
+      "unit_denominator": "Of 1,186 findings / 200 apps",
+      "source_url": "https://arxiv.org/html/2606.23130v4",
+      "date": "14 Sep 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Deng, Fan, Meng: \"hidden security rules\" root cause",
+      "value": "658 of 1,186 (55.5%)",
+      "unit_denominator": "Findings",
+      "source_url": "https://arxiv.org/html/2606.23130v4",
+      "date": "14 Sep 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Deng, Fan, Meng: prompt replay",
+      "value": "Baseline 25.7%; production-ready 11.0%; hardening skill 11.9%; professional prompt 45.7%",
+      "unit_denominator": "Reintroduction rate over 1,680 runs of 70 vulnerabilities",
+      "source_url": "https://arxiv.org/html/2606.23130v4",
+      "date": "14 Sep 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "SusVibes joint secure-and-correct",
+      "value": "10.5% (SWE-agent + Claude 4 Sonnet); 12.5% best (OpenHands + Claude 4 Sonnet); 6.0% Claude Code",
+      "unit_denominator": "Of 200 CVE-derived Python tasks",
+      "source_url": "https://arxiv.org/html/2512.03262v2",
+      "date": "16 Feb 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "SusVibes functional pass, best",
+      "value": "61.0%",
+      "unit_denominator": "Of 200 tasks",
+      "source_url": "https://arxiv.org/html/2512.03262v2",
+      "date": "16 Feb 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "SusVibes oracle-CWE effect",
+      "value": "61.0/10.5 to 56.0/10.5",
+      "unit_denominator": "FuncPass/SecPass %",
+      "source_url": "https://arxiv.org/html/2512.03262v2",
+      "date": "16 Feb 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Veracode security pass",
+      "value": "55% overall; GPT-5 extended reasoning 70–72%; Java 29%; XSS 15% pass",
+      "unit_denominator": "80 tasks, 4 CWEs, SAST-judged",
+      "source_url": "https://www.veracode.com/blog/spring-2026-genai-code-security/",
+      "date": "24 Mar 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Urmi et al. severity shares (GPT-4o)",
+      "value": "High 20.8% to 13.6%; low 32.0% to 43.5%; any finding 76.3% to 72.0%",
+      "unit_denominator": "Shares of valid files, 424 synthetic tasks",
+      "source_url": "https://arxiv.org/html/2608.24857v1",
+      "date": "25 Aug 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Shukla et al. iteration",
+      "value": "Security-focused 38 vs feature-focused 158 findings; mean per sample 2.1 to 6.2",
+      "unit_denominator": "400 samples, GPT-4o, 10 rounds",
+      "source_url": "https://arxiv.org/html/2506.11022v2",
+      "date": "26 Sep 2025",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Supabase agent skill",
+      "value": "Opus 4.6 58/50/67; Sonnet 4.6 46/58/71; GPT-5.4 71/71/88; GPT-5.4 Mini 42/63/71",
+      "unit_denominator": "% requirements met; baseline/MCP/MCP+skill; n = 6 scenarios",
+      "source_url": "https://supabase.com/blog/supabase-agent-skills",
+      "date": "9 Apr 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "MalPR-Bench CodeRabbit attribution",
+      "value": "16 of 24 in-diff; 0 of 7 out-of-diff; 3 of 14 absence-type",
+      "unit_denominator": "Held-out malicious PRs",
+      "source_url": "https://arxiv.org/abs/2608.25730",
+      "date": "26 Aug 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Copilot Code Review security findings",
+      "value": "<20 comments; 0 injection; 0 access control",
+      "unit_denominator": "Across 7 vulnerable datasets",
+      "source_url": "https://arxiv.org/html/2509.13650v1",
+      "date": "17 Sep 2025",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "AI reviewer precision ranges",
+      "value": "20–68% (Augment dataset); 64–96% (Signal65, CodeRabbit-commissioned)",
+      "unit_denominator": "Different datasets; recall unreported",
+      "source_url": "https://signal65.com/research/ai/evaluating-ai-code-review-tools-a-real-world-bug-detection-study/",
+      "date": "30 Mar 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Package hallucination rate",
+      "value": "19.7% (440,445 of 2.23M references); commercial ≥5.2%; 43% of names recur on all 10 re-queries",
+      "unit_denominator": "576,000 samples, 16 models, 2024-era",
+      "source_url": "https://arxiv.org/html/2406.10279v3",
+      "date": "2 Mar 2025",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Package hallucination 2026 re-measurement",
+      "value": "4.62–6.10%; 127 names shared by all 5 models; 53 registrable",
+      "unit_denominator": "199,845 paired prompts",
+      "source_url": "https://arxiv.org/abs/2605.17062",
+      "date": "9 Aug 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Malicious slopsquat package",
+      "value": "`unused-imports` (npm), ~233 weekly downloads, security hold",
+      "unit_denominator": "One package",
+      "source_url": "https://www.aikido.dev/blog/slopsquatting-ai-package-hallucination-attacks",
+      "date": "20 Feb 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Georgia Tech CVEs attributed to AI-authored code",
+      "value": "74 (Claude Code 49, Copilot 15)",
+      "unit_denominator": "Of 43,849 advisories since 1 May 2025",
+      "source_url": "https://www.theregister.com/2026/03/26/ai_coding_assistant_not_more_secure/",
+      "date": "20 Mar 2026",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Sentry MCP agentjacking",
+      "value": "85% exploitation success in testing; 2,388 injectable DSNs",
+      "unit_denominator": "PoC",
+      "source_url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-agentjacking-mcp-sentry-injection-20260612/",
+      "date": "12 Jun 2026",
+      "confidence": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "figure": "Shai-Hulud second wave",
+      "value": "525+ packages; ~132M monthly downloads",
+      "unit_denominator": "npm packages",
+      "source_url": "https://semgrep.dev/blog/2025/digging-for-secrets-sha1-hulud-the-second-coming-of-the-npm-worm",
+      "date": "24 Nov 2025",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "Netskope personal-account genAI use",
+      "value": "47% (down from 78%); 223 violations/org/month; 90% of orgs block some apps",
+      "unit_denominator": "Customer telemetry Oct 2024–Oct 2025",
+      "source_url": "https://www.netskope.com/resources/cloud-and-threat-reports/cloud-and-threat-report-2026",
+      "date": "6 Jan 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Gartner shadow-AI survey",
+      "value": "69% suspect or have evidence of prohibited GenAI use",
+      "unit_denominator": "302 cybersecurity leaders",
+      "source_url": "https://www.gartner.com/en/newsroom/press-releases/2025-11-19-gartner-identifies-critical-genai-blind-spots-that-cios-must-urgently-address0",
+      "date": "19 Nov 2025",
+      "confidence": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "figure": "Gartner vibe-coding forecasts",
+      "value": "60% of vibe-coded apps retired by 2028; 30% of teams strained",
+      "unit_denominator": "Strategic Planning Assumptions via vendor reprint",
+      "source_url": "https://tray.ai/guides/gartner-govern-vibe-coding.md",
+      "date": "29 Jun 2026",
+      "confidence": "PO",
+      "confidence_codes": [
+        "PO"
+      ],
+      "confidence_labels": [
+        "Press-only"
+      ]
+    },
+    {
+      "figure": "KPMG/Melbourne policy contravention",
+      "value": "44% used AI against policy; 57% hide use",
+      "unit_denominator": "48,340 respondents, 47 countries",
+      "source_url": "https://kpmg.com/xx/en/media/press-releases/2025/04/trust-of-ai-remains-a-critical-challenge.html",
+      "date": "Apr 2025",
+      "confidence": "RR",
+      "confidence_codes": [
+        "RR"
+      ],
+      "confidence_labels": [
+        "Researcher-reported"
+      ]
+    },
+    {
+      "figure": "IBM: orgs with AI policies that audit for shadow AI",
+      "value": "34%",
+      "unit_denominator": "600 breached organisations",
+      "source_url": "https://newsroom.ibm.com/2025-07-30-ibm-report-13-of-organizations-reported-breaches-of-ai-models-or-applications,-97-of-which-reported-lacking-proper-ai-access-controls",
+      "date": "30 Jul 2025",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Retool leader visibility confidence",
+      "value": "5% very confident",
+      "unit_denominator": "307 CTO/CIO/CISOs",
+      "source_url": "https://retool.com/blog/ai-governance-report-2026",
+      "date": "May 2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Nokod orphaned vulnerable apps",
+      "value": "Up to 30%",
+      "unit_denominator": "Customer sample, Power Apps",
+      "source_url": "https://nokodsecurity.com/blog/the-uncomfortable-truth-about-application-security-in-the-age-of-no-coders-lessons-from-cve-2026-20960/",
+      "date": "2026",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Zenity estate size",
+      "value": "~80,000 apps/copilots per large enterprise; 62% with vulnerabilities",
+      "unit_denominator": "Customer telemetry",
+      "source_url": "https://www.prnewswire.com/news-releases/zenity-research-finds-62-of-copilots-and-low-code-apps-contain-security-vulnerabilities-302241231.html",
+      "date": "10 Sep 2024",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Vercel Password Protection",
+      "value": "USD 20 per project per month (Pro)",
+      "unit_denominator": "List price",
+      "source_url": "https://vercel.com/docs/deployment-protection",
+      "date": "15 Sep 2026",
+      "confidence": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "figure": "Cloudflare Zero Trust",
+      "value": "Free to 50 users; USD 7/user/month",
+      "unit_denominator": "List price (page excerpt)",
+      "source_url": "https://www.cloudflare.com/plans/zero-trust-services",
+      "date": "Oct 2026",
+      "confidence": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "figure": "GitHub Secret Protection",
+      "value": "Illustrative USD 19 per active committer",
+      "unit_denominator": "90-day active committers",
+      "source_url": "https://docs.github.com/en/code-security/how-tos/secure-at-scale/configure-organization-security/configure-specific-tools/estimating-the-price-of-secret-protection",
+      "date": "Oct 2026",
+      "confidence": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "figure": "AWS Backup LAG vault storage",
+      "value": "USD 0.0575/GB-month (eu-west-1 example); restore testing USD 1.50 per recovery point",
+      "unit_denominator": "List price",
+      "source_url": "https://aws.amazon.com/backup/pricing/",
+      "date": "Oct 2026",
+      "confidence": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "figure": "Neon snapshot storage",
+      "value": "USD 0.09/GB-month",
+      "unit_denominator": "List price",
+      "source_url": "https://neon.com/docs/ai/ai-database-versioning",
+      "date": "Oct 2026",
+      "confidence": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "figure": "Air-gapped backup for 200 GB database",
+      "value": "~USD 30–40/month",
+      "unit_denominator": "Authors' arithmetic",
+      "source_url": "https://aws.amazon.com/backup/pricing/",
+      "date": "Oct 2026",
+      "confidence": "INF",
+      "confidence_codes": [
+        "INF"
+      ],
+      "confidence_labels": [
+        "Author-inference"
+      ]
+    },
+    {
+      "figure": "Claude Code sandbox permission-prompt reduction",
+      "value": "84%",
+      "unit_denominator": "Anthropic internal usage, no methodology",
+      "source_url": "https://www.anthropic.com/engineering/claude-code-sandboxing",
+      "date": "20 Oct 2025",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "Copilot Autofix fix time",
+      "value": "28 min median vs 1.5 h manual",
+      "unit_denominator": "CodeQL alerts, public beta",
+      "source_url": "https://github.blog/news-insights/product-news/secure-code-more-than-three-times-faster-with-copilot-autofix/",
+      "date": "14 Aug 2024",
+      "confidence": "VR",
+      "confidence_codes": [
+        "VR"
+      ],
+      "confidence_labels": [
+        "Vendor-reported"
+      ]
+    },
+    {
+      "figure": "AI Act Art. 50 fines",
+      "value": "Up to EUR 15M or 3% worldwide turnover",
+      "unit_denominator": "Art. 99(4)",
+      "source_url": "https://ai-act-service-desk.ec.europa.eu/en/faq",
+      "date": "2026",
+      "confidence": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    },
+    {
+      "figure": "CRA fines",
+      "value": "Up to EUR 15M or 2.5% worldwide turnover",
+      "unit_denominator": "Art. 64",
+      "source_url": "https://www.kirkland.com/publications/kirkland-alert/2026/09/the-eu-cyber-resilience-act",
+      "date": "Sep 2026",
+      "confidence": "PO",
+      "confidence_codes": [
+        "PO"
+      ],
+      "confidence_labels": [
+        "Press-only"
+      ]
+    },
+    {
+      "figure": "Colorado ADMTA penalty",
+      "value": "Up to USD 20,000 per violation",
+      "unit_denominator": "AG enforcement, 60-day cure to 2030",
+      "source_url": "https://www.skadden.com/insights/publications/2026/06/colorado-repeals-and-replaces-its-ai-act",
+      "date": "14 May 2026",
+      "confidence": "CP",
+      "confidence_codes": [
+        "CP"
+      ],
+      "confidence_labels": [
+        "Confirmed-primary"
+      ]
+    }
+  ]
+}

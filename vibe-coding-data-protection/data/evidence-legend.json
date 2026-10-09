@@ -1,0 +1,11 @@
+{
+  "codes": {
+    "CP": "Confirmed-primary",
+    "VR": "Vendor-reported",
+    "RR": "Researcher-reported",
+    "PO": "Press-only",
+    "INF": "Author-inference",
+    "PROP": "Proposal"
+  },
+  "note": "Every quantitative claim and control verdict in the paper carries one of these codes."
+}

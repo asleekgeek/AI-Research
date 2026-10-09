@@ -1,0 +1,41 @@
+/* §10 threat-path matrix. Tokens only; classes prefixed t10-. Property pill colours live in s09.css. */
+
+.t10-defs { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(14px, 2vw, 24px); border-top: 1px solid var(--line-strong); }
+.t10-defs > div { display: flex; flex-direction: column; gap: 6px; padding: 12px 0; }
+.t10-defs dt { margin: 0; }
+.t10-defs dt .verdict { font-size: 0.86rem; padding: 3px 10px 3px 8px; }
+.t10-defs dd { margin: 0; font-family: var(--display); font-size: var(--step-1); line-height: 1.3; }
+.t10-caveat { font-size: 0.95rem; padding: 10px 14px; border-left: 3px solid var(--inf); background: var(--inf-bg); border-radius: 0 var(--radius) var(--radius) 0; max-width: 80ch; }
+@media (max-width: 760px) { .t10-defs { grid-template-columns: minmax(0, 1fr); } .t10-defs > div { padding: 8px 0; border-bottom: 1px solid var(--line); } }
+
+/* The rows that demonstrated nothing: pulled out as a band, and shaded in the matrix. */
+.t10-none-band { display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border: 1px solid color-mix(in srgb, var(--warn) 45%, var(--line)); border-left: 4px solid var(--warn); border-radius: var(--radius); background: var(--warn-bg); }
+.t10-none-band h2 { color: var(--warn); }
+.t10-none-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 18px; }
+.t10-none-list > li { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; min-width: 0; padding-top: 8px; border-top: 1px solid color-mix(in srgb, var(--warn) 35%, var(--line)); }
+.t10-none-control { font-family: var(--display); font-weight: 600; font-size: var(--step-1); line-height: 1.2; }
+.t10-none-band .verdict { background: var(--surface); }
+@media (max-width: 1000px) { .t10-none-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .t10-none-list { grid-template-columns: minmax(0, 1fr); } }
+
+.t10-filters { align-items: flex-end; }
+.t10-filters .count { margin-left: auto; padding-bottom: 6px; }
+.t10-filters .seg button .chip { vertical-align: 0; }
+
+.t10-table th.t10-c0 { width: 17%; }
+.t10-table th.t10-c1 { width: 15%; }
+.t10-table th.t10-c2 { width: 14%; }
+.t10-table th.t10-c3 { width: 26%; }
+.t10-table th.t10-c4 { width: 14%; }
+.t10-table th.t10-c5 { width: 14%; }
+.t10-table { min-width: 860px; }
+.t10-table tbody tr.t10-is-none > * { background: color-mix(in srgb, var(--warn-bg) 75%, var(--surface)); }
+.t10-table tbody tr.t10-is-none > th { box-shadow: inset 4px 0 0 var(--warn); }
+.t10-testlink { font-weight: 500; white-space: nowrap; }
+@container (width < 620px) {
+  .t10-table { min-width: 0; }
+  .t10-table tbody tr.t10-is-none { background: color-mix(in srgb, var(--warn-bg) 75%, var(--surface)); box-shadow: inset 4px 0 0 var(--warn); }
+  .t10-table tbody tr.t10-is-none > * { background: transparent; box-shadow: none; }
+  .t10-table tbody tr.t10-is-none > th { box-shadow: none; }
+  .t10-table td[data-label='Property']::before { display: block; margin-bottom: 3px; }
+}

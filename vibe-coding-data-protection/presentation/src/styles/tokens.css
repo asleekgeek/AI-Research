@@ -1,0 +1,74 @@
+/* Layout: slim sticky header, one slide at a time in a 76rem column, a section-segmented progress
+   rail fixed to the bottom; wide tables, timelines and diagrams scroll inside their own frames.
+   Colour and type tokens are the paper's reading page (paper/web/reading-page.html), extended. */
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #f0f3f6;
+  --fg: #17202b;
+  --muted: #5b6673;
+  --line: #d6dde6;
+  --line-strong: #aab6c3;
+  --accent: #0e5a6b;
+  --accent-soft: #e3f0f2;
+  --accent-ink: #ffffff;
+  --code-bg: #eef2f5;
+  --warn: #8a3b1e;
+  --warn-bg: #fae6de;
+  --shadow: 0 1px 2px rgb(23 32 43 / 0.06), 0 6px 18px rgb(23 32 43 / 0.06);
+
+  /* Evidence-confidence chips (paper §0) */
+  --cp: #1f6f43; --cp-bg: #e4f3ea;
+  --vr: #7a5a00; --vr-bg: #fbf1d6;
+  --rr: #5a3e9e; --rr-bg: #ece6f8;
+  --po: #8a3b1e; --po-bg: #fae6de;
+  --inf: #3b4f66; --inf-bg: #e6ebf1;
+  --prop: #0e5a6b; --prop-bg: #e3f0f2;
+
+  /* Timeline lanes and chart series: tuned to stay distinct from the chip hues */
+  --lane-1: #0e5a6b;
+  --lane-2: #a3431f;
+  --lane-3: #4b3fa0;
+  --lane-4: #7a5a00;
+  --lane-5: #2f6b3a;
+  --lane-6: #66717d;
+
+  --display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --body: 'IBM Plex Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --step--1: 0.84rem;
+  --step-0: 1rem;
+  --step-1: 1.16rem;
+  --step-2: 1.4rem;
+  --step-3: clamp(1.55rem, 1.1rem + 1.6vw, 2.05rem);
+  --step-4: clamp(1.85rem, 1.2rem + 2.6vw, 2.9rem);
+  --radius: 6px;
+  --col: 76rem;
+  --gutter: clamp(16px, 4vw, 48px);
+  --bar-h: 3.25rem;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #101418; --surface: #161b21; --surface-2: #1b2128; --fg: #e4e9ee; --muted: #9aa7b4;
+    --line: #2a333d; --line-strong: #3e4a57; --accent: #6cc3d3; --accent-soft: #163038; --accent-ink: #0b1215;
+    --code-bg: #1c232b; --warn: #f0a688; --warn-bg: #3a1f14;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 18px rgb(0 0 0 / 0.3);
+    --cp: #8bd4a8; --cp-bg: #17301f; --vr: #e4c56a; --vr-bg: #35290a; --rr: #c3b0ee; --rr-bg: #2a2140;
+    --po: #f0a688; --po-bg: #3a1f14; --inf: #b7c4d2; --inf-bg: #232b35; --prop: #6cc3d3; --prop-bg: #163038;
+    --lane-1: #6cc3d3; --lane-2: #f0a688; --lane-3: #b3a5f0; --lane-4: #e4c56a; --lane-5: #8bd4a8; --lane-6: #9aa7b4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #101418; --surface: #161b21; --surface-2: #1b2128; --fg: #e4e9ee; --muted: #9aa7b4;
+  --line: #2a333d; --line-strong: #3e4a57; --accent: #6cc3d3; --accent-soft: #163038; --accent-ink: #0b1215;
+  --code-bg: #1c232b; --warn: #f0a688; --warn-bg: #3a1f14;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 18px rgb(0 0 0 / 0.3);
+  --cp: #8bd4a8; --cp-bg: #17301f; --vr: #e4c56a; --vr-bg: #35290a; --rr: #c3b0ee; --rr-bg: #2a2140;
+  --po: #f0a688; --po-bg: #3a1f14; --inf: #b7c4d2; --inf-bg: #232b35; --prop: #6cc3d3; --prop-bg: #163038;
+  --lane-1: #6cc3d3; --lane-2: #f0a688; --lane-3: #b3a5f0; --lane-4: #e4c56a; --lane-5: #8bd4a8; --lane-6: #9aa7b4;
+  color-scheme: dark;
+}
