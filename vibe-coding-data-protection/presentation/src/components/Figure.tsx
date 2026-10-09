@@ -9,9 +9,10 @@ export function FigTile({ n, compact, label }: { n: number; compact?: boolean; l
   const f = fig(n);
   return (
     <div class={`figtile${compact ? ' compact' : ''}`} data-figure={n}>
-      <div class="fig-label">{label ?? f.figure}</div>
-      <div class="fig-value">{f.value}</div>
-      <div class="fig-denom">{f.unit_denominator}</div>
+      {/* Whitespace between blocks keeps the page text as the data states it ("6.2" then "400 …"). */}
+      <div class="fig-label">{label ?? f.figure}</div>{' '}
+      <div class="fig-value">{f.value}</div>{' '}
+      <div class="fig-denom">{f.unit_denominator}</div>{' '}
       <div class="fig-foot">
         <Chips codes={f.confidence_codes} />
         <span>{f.date}</span>
