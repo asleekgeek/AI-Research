@@ -16,6 +16,7 @@ a { color: var(--accent); text-underline-offset: 2px; text-decoration-color: col
 a:hover { text-decoration-color: currentColor; }
 code { font-family: var(--mono); font-size: 0.86em; background: var(--code-bg); padding: 0.06em 0.3em; border-radius: 3px; overflow-wrap: anywhere; }
 pre { margin: 0; }
+pre code { background: none; padding: 0; font-size: inherit; border-radius: 0; }
 strong, b { font-weight: 600; }
 button { font: inherit; color: inherit; }
 input, select { font: inherit; color: inherit; }
